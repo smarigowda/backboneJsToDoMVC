@@ -48,6 +48,9 @@ var app = app || {};
 			// we've to create a workaround.
 			// https://github.com/tastejs/todomvc/issues/469
 			if (this.model.changed.id !== undefined) {
+				debugger
+				// Santosh
+				// I do not see the flow reaching this code
 				return;
 			}
 
