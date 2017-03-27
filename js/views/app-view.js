@@ -55,6 +55,7 @@ var app = app || {};
 			var remaining = app.todos.remaining().length;
 
 			if (app.todos.length) {
+				debugger
 				this.$main.show();
 				this.$footer.show();
 
@@ -68,7 +69,8 @@ var app = app || {};
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
 					.addClass('selected');
 			} else {
-				this.$main.hide();
+				debugger
+				// this.$main.hide();
 				this.$footer.hide();
 			}
 

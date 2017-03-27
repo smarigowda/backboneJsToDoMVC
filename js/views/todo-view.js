@@ -32,7 +32,7 @@ var app = app || {};
 		initialize: function () {
 			this.listenTo(this.model, 'change', () => { 
 				debugger;
-				this.render 
+				this.render
 			});
 			this.listenTo(this.model, 'destroy', this.remove);
 			this.listenTo(this.model, 'visible', this.toggleVisible);
@@ -55,9 +55,9 @@ var app = app || {};
 			}
 
 			this.$el.html(this.template(this.model.toJSON()));
-			this.$el.toggleClass('completed', this.model.get('completed'));
-			this.toggleVisible();
-			this.$input = this.$('.edit');
+			// this.$el.toggleClass('completed', this.model.get('completed'));
+			// this.toggleVisible();
+			// this.$input = this.$('.edit');
 			return this;
 		},
 
