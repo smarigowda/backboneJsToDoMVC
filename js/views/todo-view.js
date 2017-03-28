@@ -31,7 +31,7 @@ var app = app || {};
 		// convenience.
 		initialize: function () {
 			this.listenTo(this.model, 'change', () => { 
-				debugger;
+				// debugger;
 				this.render
 			});
 			this.listenTo(this.model, 'destroy', this.remove);
@@ -48,16 +48,17 @@ var app = app || {};
 			// we've to create a workaround.
 			// https://github.com/tastejs/todomvc/issues/469
 			if (this.model.changed.id !== undefined) {
-				debugger
+				// debugger
 				// Santosh
 				// I do not see the flow reaching this code
 				return;
 			}
-
+			// re-rendering...
+			// debugger
 			this.$el.html(this.template(this.model.toJSON()));
-			// this.$el.toggleClass('completed', this.model.get('completed'));
-			// this.toggleVisible();
-			// this.$input = this.$('.edit');
+			this.$el.toggleClass('completed', this.model.get('completed'));
+			this.toggleVisible();
+			this.$input = this.$('.edit');
 			return this;
 		},
 

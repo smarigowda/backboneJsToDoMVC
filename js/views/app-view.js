@@ -55,7 +55,7 @@ var app = app || {};
 			var remaining = app.todos.remaining().length;
 
 			if (app.todos.length) {
-				debugger
+				// debugger
 				this.$main.show();
 				this.$footer.show();
 
@@ -69,7 +69,7 @@ var app = app || {};
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
 					.addClass('selected');
 			} else {
-				debugger
+				// debugger
 				// this.$main.hide();
 				this.$footer.hide();
 			}
@@ -80,7 +80,7 @@ var app = app || {};
 		// Add a single todo item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
 		addOne: function (todo) {
-			debugger
+			// debugger
 			var view = new app.TodoView({ model: todo });
 			this.$list.append(view.render().el);
 		},
