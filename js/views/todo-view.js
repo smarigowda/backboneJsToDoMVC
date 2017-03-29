@@ -31,8 +31,9 @@ var app = app || {};
 		// convenience.
 		initialize: function () {
 			this.listenTo(this.model, 'change', () => { 
-				// debugger;
-				this.render
+				// debugger
+				this.render()
+				// debugger
 			});
 			this.listenTo(this.model, 'destroy', this.remove);
 			this.listenTo(this.model, 'visible', this.toggleVisible);
@@ -47,12 +48,12 @@ var app = app || {};
 			// `id` change.  It's known Backbone LocalStorage bug, therefore
 			// we've to create a workaround.
 			// https://github.com/tastejs/todomvc/issues/469
-			if (this.model.changed.id !== undefined) {
-				// debugger
-				// Santosh
-				// I do not see the flow reaching this code
-				return;
-			}
+			// if (this.model.changed.id !== undefined) {
+			// 	// debugger
+			// 	// Santosh
+			// 	// I do not see the flow reaching this code
+			// 	return;
+			// }
 			// re-rendering...
 			// debugger
 			this.$el.html(this.template(this.model.toJSON()));
@@ -74,7 +75,9 @@ var app = app || {};
 
 		// Toggle the `"completed"` state of the model.
 		toggleCompleted: function () {
+			// debugger
 			this.model.toggle();
+			// debugger
 		},
 
 		// Switch this view into `"editing"` mode, displaying the input field.
