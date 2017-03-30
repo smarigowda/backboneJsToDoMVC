@@ -40,7 +40,7 @@ var app = app || {};
 			this.listenTo(app.todos, 'filter', this.filterAll);
 
 			// Original
-			this.listenTo(app.todos, 'all', _.debounce(this.render, 0))
+			// this.listenTo(app.todos, 'all', _.debounce(this.render, 0))
 
 			// -- works
 			// var thisRender = this.render
@@ -48,6 +48,14 @@ var app = app || {};
 
 			// -- works
 			// this.listenTo(app.todos, 'all', () => { this.render() }); 
+
+			// -- works
+			this.listenTo(app.todos, 'all', () => { 
+				debugger
+				var thisRender = _.debounce(this.render.bind(this), 0) // now it works !!!!!
+				thisRender() // this was pointing to window, hence did not work
+			}); 
+
 
 			// -- does not work
 			// var that = this;
@@ -71,6 +79,7 @@ var app = app || {};
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function () {
+			console.log(this)
 			debugger
 			var completed = app.todos.completed().length;
 			var remaining = app.todos.remaining().length;
