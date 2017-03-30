@@ -38,7 +38,27 @@ var app = app || {};
 			this.listenTo(app.todos, 'reset', this.addAll);
 			this.listenTo(app.todos, 'change:completed', this.filterOne);
 			this.listenTo(app.todos, 'filter', this.filterAll);
-			this.listenTo(app.todos, 'all', _.debounce(this.render, 0));
+
+			// Original
+			this.listenTo(app.todos, 'all', _.debounce(this.render, 0))
+
+			// -- works
+			// var thisRender = this.render
+			// this.listenTo(app.todos, 'all', _.debounce(thisRender, 0)); 
+
+			// -- works
+			// this.listenTo(app.todos, 'all', () => { this.render() }); 
+
+			// -- does not work
+			// var that = this;
+			// var dRender = _.debounce(that.render, 0)
+			// this.listenTo(app.todos, 'all', dRender;
+
+			// -- does not work
+			// this.listenTo(app.todos, 'all', () => { 
+			// 	debugger
+			// 	_.debounce(this.render, 1000)()
+			// });
 
 			// Suppresses 'add' events with {reset: true} and prevents the app view
 			// from being re-rendered for every model. Only renders when the 'reset'
@@ -51,6 +71,7 @@ var app = app || {};
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function () {
+			debugger
 			var completed = app.todos.completed().length;
 			var remaining = app.todos.remaining().length;
 
@@ -69,7 +90,7 @@ var app = app || {};
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
 					.addClass('selected');
 			} else {
-				// debugger
+				debugger
 				// this.$main.hide();
 				this.$footer.hide();
 			}

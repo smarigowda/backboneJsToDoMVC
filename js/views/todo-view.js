@@ -35,7 +35,11 @@ var app = app || {};
 				this.render()
 				// debugger
 			});
-			this.listenTo(this.model, 'destroy', this.remove);
+			this.listenTo(this.model, 'destroy', () => {
+				debugger
+				this.remove()
+				debugger
+			});
 			this.listenTo(this.model, 'visible', this.toggleVisible);
 		},
 
