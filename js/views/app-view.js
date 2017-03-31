@@ -51,7 +51,7 @@ var app = app || {};
 
 			// -- works
 			this.listenTo(app.todos, 'all', () => { 
-				debugger
+				// debugger
 				var thisRender = _.debounce(this.render.bind(this), 0) // now it works !!!!!
 				thisRender() // this was pointing to window, hence did not work
 			}); 
@@ -79,8 +79,8 @@ var app = app || {};
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function () {
-			console.log(this)
-			debugger
+			// console.log(this)
+			// debugger
 			var completed = app.todos.completed().length;
 			var remaining = app.todos.remaining().length;
 
@@ -99,8 +99,8 @@ var app = app || {};
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
 					.addClass('selected');
 			} else {
-				debugger
-				// this.$main.hide();
+				// debugger
+				this.$main.hide();
 				this.$footer.hide();
 			}
 
@@ -110,8 +110,9 @@ var app = app || {};
 		// Add a single todo item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
 		addOne: function (todo) {
-			// debugger
+			debugger
 			var view = new app.TodoView({ model: todo });
+			// view.render() // running just this will not display the new to do on the page...
 			this.$list.append(view.render().el);
 		},
 

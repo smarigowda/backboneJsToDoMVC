@@ -17,9 +17,12 @@
 
     // Filter down the list of all todo items that are finished.
     completed: function() {
-      return this.filter(function( todo ) {
+      var completedTodos = this.filter(function(todo) {
         return todo.get('completed');
-      });
+      })
+      // console.log(completedTodos)
+      // debugger
+      return completedTodos;
     },
 
     // Filter down the list to only todo items that are still not finished.
