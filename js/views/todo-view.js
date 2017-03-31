@@ -59,7 +59,8 @@ var app = app || {};
 			// 	return;
 			// }
 			// re-rendering...
-			// debugger
+			console.log(this)
+			debugger
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
 			this.toggleVisible();

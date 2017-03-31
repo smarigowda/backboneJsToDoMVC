@@ -34,8 +34,19 @@ var app = app || {};
 			this.$main = this.$('.main');
 			this.$list = $('.todo-list');
 
+			// this.listenTo(app.todos, 'add', function() {
+			// 	console.log('....add event is triggered')
+			// 	debugger
+			// 	this.addOne.bind(this)()
+			// });
+
 			this.listenTo(app.todos, 'add', this.addOne);
-			this.listenTo(app.todos, 'reset', this.addAll);
+
+			this.listenTo(app.todos, 'reset', () => { 
+				console.log('....reset event is triggered')
+				debugger
+				this.addAll.bind(this)()
+			});
 			this.listenTo(app.todos, 'change:completed', this.filterOne);
 			this.listenTo(app.todos, 'filter', this.filterAll);
 
@@ -72,6 +83,7 @@ var app = app || {};
 			// from being re-rendered for every model. Only renders when the 'reset'
 			// event is triggered at the end of the fetch.
 			// debugger
+			debugger
 			app.todos.fetch({reset: true});
 			// debugger
 		},
@@ -79,15 +91,15 @@ var app = app || {};
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function () {
-			// console.log(this)
-			// debugger
+			console.log(this)
+			debugger
 			var completed = app.todos.completed().length;
 			var remaining = app.todos.remaining().length;
 
 			if (app.todos.length) {
 				// debugger
-				this.$main.show();
-				this.$footer.show();
+				this.$main.show()
+				this.$footer.show()
 
 				this.$footer.html(this.statsTemplate({
 					completed: completed,
@@ -97,14 +109,14 @@ var app = app || {};
 				this.$('.filters li a')
 					.removeClass('selected')
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
-					.addClass('selected');
+					.addClass('selected')
 			} else {
 				// debugger
-				this.$main.hide();
-				this.$footer.hide();
+				this.$main.hide()
+				this.$footer.hide()
 			}
 
-			this.allCheckbox.checked = !remaining;
+			this.allCheckbox.checked = !remaining
 		},
 
 		// Add a single todo item to the list by creating a view for it, and
